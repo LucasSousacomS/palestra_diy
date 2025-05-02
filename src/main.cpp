@@ -41,27 +41,39 @@ void loop() {
   if(!flags & (1 << flag_dist)){
     if(!digitalRead(bot)){
       delay(50);
-      while(digitalRead(bot) == 0);
-      if(millis() - tempo >= 2000){
-        flags |= (1 << flag_dist);
-        digitalWrite(vermelho, HIGH);
-        digitalWrite(amarelo, HIGH);
-        digitalWrite(verde, HIGH);
-        delay(50);
-      }else{   
-          delay(3000);
-          digitalWrite(vermelho, LOW);
-          digitalWrite(amarelo, LOW);
-          digitalWrite(verde, HIGH);
-          delay(10000);
-          digitalWrite(vermelho, LOW);
-          digitalWrite(amarelo, HIGH);
-          digitalWrite(verde, LOW);
-          delay(2000);
+      while(digitalRead(bot) == 0){
+        if(millis() - tempo >= 2000){
           digitalWrite(vermelho, HIGH);
-          digitalWrite(amarelo, LOW);
-          digitalWrite(verde, LOW);
+          digitalWrite(amarelo, HIGH);
+          digitalWrite(verde, HIGH);
+          flags |= (1 << flag_dist);       
+          delay(50);
+          while(!digitalRead(bot)){
+            delay(500);
+            digitalWrite(vermelho, LOW);
+            digitalWrite(amarelo, LOW);
+            digitalWrite(verde, LOW);
+            delay(500);
+            digitalWrite(vermelho, HIGH);
+            digitalWrite(amarelo, HIGH);
+            digitalWrite(verde, HIGH);
+            delay(500);
+          }
+          return;
         }
+      };
+        delay(3000);
+        digitalWrite(vermelho, LOW);
+        digitalWrite(amarelo, LOW);
+        digitalWrite(verde, HIGH);
+        delay(10000);
+        digitalWrite(vermelho, LOW);
+        digitalWrite(amarelo, HIGH);
+        digitalWrite(verde, LOW);
+        delay(2000);
+        digitalWrite(vermelho, HIGH);
+        digitalWrite(amarelo, LOW);
+        digitalWrite(verde, LOW);
       }
       delay(10);
     }else{      
