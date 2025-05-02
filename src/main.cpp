@@ -49,15 +49,15 @@ void loop() {
         digitalWrite(verde, HIGH);
         delay(50);
       }else{   
-          delay(2000);
-          digitalWrite(vermelho, LOW);
-          digitalWrite(amarelo, HIGH);
-          digitalWrite(verde, LOW);
           delay(3000);
           digitalWrite(vermelho, LOW);
           digitalWrite(amarelo, LOW);
           digitalWrite(verde, HIGH);
           delay(10000);
+          digitalWrite(vermelho, LOW);
+          digitalWrite(amarelo, HIGH);
+          digitalWrite(verde, LOW);
+          delay(2000);
           digitalWrite(vermelho, HIGH);
           digitalWrite(amarelo, LOW);
           digitalWrite(verde, LOW);
