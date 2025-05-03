@@ -38,7 +38,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   uint32_t tempo = millis();
-  if(!flags & (1 << flag_dist)){
+  if(~flags & (1 << flag_dist)){
     if(!digitalRead(bot)){
       delay(50);
       while(digitalRead(bot) == 0){
@@ -84,6 +84,8 @@ void loop() {
         digitalWrite(vermelho, HIGH);
         digitalWrite(amarelo, LOW);
         digitalWrite(verde, LOW);
+        delay(50);
+        return;
       }
       dist();
       delay(100);
